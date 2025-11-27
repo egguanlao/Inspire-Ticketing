@@ -81,7 +81,7 @@ function getClientIP(request: NextRequest): string | null {
   }
 
   // Fallback to direct connection IP
-  const ip = request.ip || request.headers.get('x-vercel-forwarded-for');
+  const ip = request.headers.get('x-vercel-forwarded-for');
   if (ip) {
     const cleanIP = ip.split(':')[0];
     if (cleanIP && cleanIP !== '::1' && cleanIP !== '127.0.0.1') {
