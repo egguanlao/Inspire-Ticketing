@@ -5,7 +5,6 @@ import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { db } from '../../../lib/firebase';
 import TableFront from './tableFront';
 import HeaderFront from './headerFront';
-import TicketId from './ticketId';
 import AdminLoadingOverlay from './AdminLoadingOverlay';
 
 // Audio file - Place your .mp3 file in the public folder and name it 'reminder.mp3'
@@ -15,7 +14,7 @@ const REMINDER_AUDIO_URL = '/reminder.mp3';
 // Helper functions
 const normalizeStatus = (status) => {
   const value = String(status ?? '').toLowerCase();
-  if (value === 'resolved' || value === 'closed') {
+  if (value === 'complete' || value === 'resolved' || value === 'closed') {
     return 'resolved';
   }
   return 'unresolved';
@@ -34,7 +33,6 @@ const formatDate = (ticket) => {
 
 export default function AdminDashboard({ onLogout = () => {} }) {
   const [activeFilter, setActiveFilter] = useState('unresolved');
-  const [selectedTicketId, setSelectedTicketId] = useState(null);
   const [tickets, setTickets] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isLogoutProcessing, setIsLogoutProcessing] = useState(false);
@@ -303,27 +301,11 @@ const playReminderAudioFiveTimes = async () => {
       return;
     }
 
-    // Pause timer if modal is open (response form is being filled)
-    if (selectedTicketId) {
-      // Save current countdown value when modal opens
-      if (pausedCountdownRef.current === null) {
-        pausedCountdownRef.current = timerCountdownRef.current;
-      }
-      return;
-    }
+    // Reset countdown when reminder is turned on
+    setTimerCountdown(60);
+    timerCountdownRef.current = 60;
 
-    // Resume countdown from saved value when modal closes, or reset if starting fresh
-    if (pausedCountdownRef.current !== null) {
-      setTimerCountdown(pausedCountdownRef.current);
-      timerCountdownRef.current = pausedCountdownRef.current;
-      pausedCountdownRef.current = null;
-    } else {
-      // Reset countdown when reminder is turned on (first time)
-      setTimerCountdown(60);
-      timerCountdownRef.current = 60;
-    }
-
-    // Countdown timer (updates every second) - only runs when modal is closed
+    // Countdown timer (updates every second)
     const countdownInterval = setInterval(() => {
       setTimerCountdown((prev) => {
         const newValue = prev <= 1 ? 60 : prev - 1;
@@ -352,14 +334,7 @@ const playReminderAudioFiveTimes = async () => {
       clearInterval(timerInterval);
       clearInterval(countdownInterval);
     };
-  }, [reminderEnabled, hasUserInteracted, selectedTicketId]);
-
-  // Stop audio when user clicks a ticket
-  useEffect(() => {
-    if (selectedTicketId) {
-      stopAllAudio();
-    }
-  }, [selectedTicketId]);
+  }, [reminderEnabled, hasUserInteracted]);
 
   // Search and filter state
   const [searchQuery, setSearchQuery] = useState('');
@@ -424,14 +399,6 @@ const playReminderAudioFiveTimes = async () => {
 
     return result;
   }, [sortedTickets, activeFilter, filterSeverity, filterDepartment, searchQuery]);
-
-  const handleTicketClick = (ticketId) => {
-    setSelectedTicketId(ticketId);
-  };
-
-  const handleCloseTicket = () => {
-    setSelectedTicketId(null);
-  };
 
   return (
     <>
@@ -605,39 +572,12 @@ const playReminderAudioFiveTimes = async () => {
                 tickets={filteredTickets}
                 isLoading={isLoading}
                 error={error}
-                normalizeStatus={normalizeStatus}
                 formatDate={formatDate}
-                onTicketClick={handleTicketClick}
               />
             </div>
           </div>
         </section>
       </section>
-
-      {/* Ticket Detail Modal/Overlay */}
-      {selectedTicketId && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-          <div className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-2xl">
-            <button
-              onClick={handleCloseTicket}
-              className="absolute top-4 right-4 z-10 rounded-full bg-[rgba(79,163,227,0.2)] p-2 text-[#F2F6FF] hover:bg-[rgba(79,163,227,0.4)] transition"
-              aria-label="Close ticket details"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            <TicketId ticketId={selectedTicketId} onClose={handleCloseTicket} />
-          </div>
-        </div>
-      )}
     </main>
 
     <AdminLoadingOverlay
