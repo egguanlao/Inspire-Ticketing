@@ -18,6 +18,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Ensure modals can overlay everything */
+#modal-root {
+  position: relative;
+  z-index: 9999;
+}
+
 @keyframes tankDrain {
   0% {
     clip-path: inset(0 0 0 0);
