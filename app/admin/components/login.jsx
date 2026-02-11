@@ -72,7 +72,7 @@ export default function AdminLogin({ onSuccess }) {
 
   return (
     <>
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#05060A] px-6 py-12 text-[#F2F6FF]">
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#05060A] px-4 py-8 sm:px-6 sm:py-12 text-[#F2F6FF]">
       {autofillStyles}
       <div
         aria-hidden="true"
@@ -82,21 +82,21 @@ export default function AdminLogin({ onSuccess }) {
       <div className="absolute bottom-10 left-0 h-72 w-72 rounded-full bg-[#6E63C6]/30 blur-[140px]" />
 
       <section className="relative z-10 w-full max-w-xl">
-        <div className="rounded-[32px] border border-[rgba(79,163,227,0.35)] bg-[rgba(19,22,38,0.92)] shadow-[0_35px_90px_rgba(5,6,10,0.75)] backdrop-blur">
-          <div className="rounded-[30px] border border-[rgba(79,163,227,0.25)] px-12 py-12">
-            <div className="mb-8 text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.65em] text-[#6E86E0]">
+        <div className="rounded-[24px] sm:rounded-[32px] border border-[rgba(79,163,227,0.35)] bg-[rgba(19,22,38,0.92)] shadow-[0_35px_90px_rgba(5,6,10,0.75)] backdrop-blur">
+          <div className="rounded-[22px] sm:rounded-[30px] border border-[rgba(79,163,227,0.25)] px-6 py-8 sm:px-12 sm:py-12">
+            <div className="mb-6 sm:mb-8 text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.4em] sm:tracking-[0.65em] text-[#6E86E0]">
                 Inspire IT Ticketing
               </p>
-              <h1 className="mt-4 text-3xl font-semibold text-[#F2F6FF]">Admin Access</h1>
-              <p className="mt-3 text-sm text-[#A9B0D6]">
+              <h1 className="mt-3 sm:mt-4 text-2xl sm:text-3xl font-semibold text-[#F2F6FF]">Admin Access</h1>
+              <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-[#A9B0D6] px-2">
                 Enter your credentials to manage tickets and responses.
               </p>
             </div>
 
-            <form className="space-y-5" onSubmit={handleSubmit}>
+            <form className="space-y-4 sm:space-y-5" onSubmit={handleSubmit}>
               <div className="space-y-2">
-                <label htmlFor="username" className="text-sm font-semibold uppercase tracking-[0.25em] text-[#7D8FEA]">
+                <label htmlFor="username" className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#7D8FEA]">
                   Username
                 </label>
                 <input
@@ -107,14 +107,14 @@ export default function AdminLogin({ onSuccess }) {
                   autoComplete="username"
                   value={formData.username}
                   onChange={handleChange}
-                  className="w-full rounded-2xl border border-[rgba(79,163,227,0.35)] bg-[rgba(10,13,22,0.95)] px-5 py-4 text-sm text-[#F2F6FF] placeholder:text-[#A9B0D6] focus:border-[#6E63C6] focus:outline-none focus:ring-2 focus:ring-[#6E63C6]"
+                  className="w-full rounded-xl sm:rounded-2xl border border-[rgba(79,163,227,0.35)] bg-[rgba(10,13,22,0.95)] px-4 py-3 sm:px-5 sm:py-4 text-sm text-[#F2F6FF] placeholder:text-[#A9B0D6] focus:border-[#6E63C6] focus:outline-none focus:ring-2 focus:ring-[#6E63C6]"
                   placeholder="Enter admin username"
                   required
                 />
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="password" className="text-sm font-semibold uppercase tracking-[0.25em] text-[#7D8FEA]">
+                <label htmlFor="password" className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#7D8FEA]">
                   Password
                 </label>
                 <div className="relative">
@@ -126,14 +126,14 @@ export default function AdminLogin({ onSuccess }) {
                     autoComplete="current-password"
                     value={formData.password}
                     onChange={handleChange}
-                    className="w-full rounded-2xl border border-[rgba(79,163,227,0.35)] bg-[rgba(10,13,22,0.95)] px-5 py-4 pr-12 text-sm text-[#F2F6FF] placeholder:text-[#A9B0D6] focus:border-[#6E63C6] focus:outline-none focus:ring-2 focus:ring-[#6E63C6]"
+                    className="w-full rounded-xl sm:rounded-2xl border border-[rgba(79,163,227,0.35)] bg-[rgba(10,13,22,0.95)] px-4 py-3 sm:px-5 sm:py-4 pr-12 text-sm text-[#F2F6FF] placeholder:text-[#A9B0D6] focus:border-[#6E63C6] focus:outline-none focus:ring-2 focus:ring-[#6E63C6]"
                     placeholder="Enter admin password"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword((prev) => !prev)}
-                    className="absolute inset-y-1 right-1 flex items-center rounded-xl bg-[rgba(12,15,26,0.95)] px-3 text-[#A9B0D6] transition hover:text-[#F2F6FF]"
+                    className="absolute inset-y-1 right-1 flex items-center rounded-lg sm:rounded-xl bg-[rgba(12,15,26,0.95)] px-2 sm:px-3 text-[#A9B0D6] transition hover:text-[#F2F6FF] active:text-[#F2F6FF]"
                     aria-label={showPassword ? 'Hide password' : 'Show password'}
                   >
                     {showPassword ? (
@@ -171,7 +171,7 @@ export default function AdminLogin({ onSuccess }) {
               </div>
 
               {error && (
-                <div className="rounded-2xl border border-red-500/40 bg-red-500/10 px-5 py-3 text-sm text-red-200">
+                <div className="rounded-xl sm:rounded-2xl border border-red-500/40 bg-red-500/10 px-4 py-2.5 sm:px-5 sm:py-3 text-xs sm:text-sm text-red-200">
                   {error}
                 </div>
               )}
@@ -179,14 +179,14 @@ export default function AdminLogin({ onSuccess }) {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-6 w-full rounded-2xl bg-gradient-to-r from-[#4B4F8F] via-[#6E63C6] to-[#4FA3E3] px-5 py-4 text-sm font-semibold text-white shadow-lg shadow-[rgba(79,163,227,0.35)] transition hover:scale-[1.01] focus:outline-none focus:ring-2 focus:ring-[#4FA3E3] focus:ring-offset-2 focus:ring-offset-[#05060A] disabled:cursor-not-allowed disabled:opacity-60"
+                className="mt-5 sm:mt-6 w-full rounded-xl sm:rounded-2xl bg-gradient-to-r from-[#4B4F8F] via-[#6E63C6] to-[#4FA3E3] px-5 py-3 sm:py-4 text-sm font-semibold text-white shadow-lg shadow-[rgba(79,163,227,0.35)] transition hover:scale-[1.01] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#4FA3E3] focus:ring-offset-2 focus:ring-offset-[#05060A] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isSubmitting ? 'Authenticating…' : 'Enter dashboard'}
               </button>
             </form>
           </div>
         </div>
-        <p className="mt-6 text-center text-xs uppercase tracking-[0.45em] text-[#6E86E0]">
+        <p className="mt-4 sm:mt-6 text-center text-xs uppercase tracking-[0.3em] sm:tracking-[0.45em] text-[#6E86E0]">
           Secure admin access only
         </p>
       </section>

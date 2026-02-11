@@ -4,13 +4,13 @@ import { Suspense } from 'react';
 
 function BlockedContent() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 px-4">
-      <div className="max-w-md w-full bg-gray-800/50 backdrop-blur-sm border border-red-500/30 rounded-2xl p-8 shadow-2xl">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 px-4 sm:px-6">
+      <div className="max-w-md w-full bg-gray-800/50 backdrop-blur-sm border border-red-500/30 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-2xl">
         <div className="text-center">
           {/* Error Icon */}
-          <div className="mx-auto w-16 h-16 mb-6 flex items-center justify-center rounded-full bg-red-500/20 border border-red-500/50">
+          <div className="mx-auto w-14 h-14 sm:w-16 sm:h-16 mb-5 sm:mb-6 flex items-center justify-center rounded-full bg-red-500/20 border border-red-500/50">
             <svg
-              className="w-8 h-8 text-red-400"
+              className="w-7 h-7 sm:w-8 sm:h-8 text-red-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -26,18 +26,18 @@ function BlockedContent() {
           </div>
 
           {/* Error Title */}
-          <h1 className="text-2xl font-bold text-red-400 mb-3">
+          <h1 className="text-xl sm:text-2xl font-bold text-red-400 mb-3">
             Access Denied
           </h1>
 
           {/* Error Message */}
-          <p className="text-gray-300 mb-6 leading-relaxed">
+          <p className="text-sm sm:text-base text-gray-300 mb-5 sm:mb-6 leading-relaxed">
             You do not have permission to access this resource. This website is only accessible from authorized network locations.
           </p>
 
           {/* Additional Info */}
-          <div className="bg-gray-900/50 rounded-lg p-4 mb-6 border border-gray-700/50">
-            <p className="text-sm text-gray-400">
+          <div className="bg-gray-900/50 rounded-lg p-3 sm:p-4 mb-5 sm:mb-6 border border-gray-700/50">
+            <p className="text-xs sm:text-sm text-gray-400">
               If you believe this is an error, please contact your system administrator.
             </p>
           </div>
@@ -45,7 +45,7 @@ function BlockedContent() {
           {/* Back Button */}
           <button
             onClick={() => window.history.back()}
-            className="w-full px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-colors duration-200"
+            className="w-full px-5 py-3 sm:px-6 sm:py-3 bg-gray-700 hover:bg-gray-600 active:bg-gray-600 text-white text-sm sm:text-base font-medium rounded-lg transition-colors duration-200"
           >
             Go Back
           </button>

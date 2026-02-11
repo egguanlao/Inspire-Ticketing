@@ -98,11 +98,11 @@ export default function TicketFormF({
 
   const getCardClasses = (step) => {
     const base =
-      'group relative flex h-full flex-col items-start gap-3 rounded-2xl border px-5 py-5 text-left transition focus:outline-none focus:ring-2 focus:ring-[#4FA3E3] focus:ring-offset-2 focus:ring-offset-[#0F0F0F]';
+      'group relative flex h-full flex-col items-start gap-2 sm:gap-3 rounded-xl sm:rounded-2xl border px-3 py-3 sm:px-5 sm:py-5 text-left transition focus:outline-none focus:ring-2 focus:ring-[#4FA3E3] focus:ring-offset-2 focus:ring-offset-[#0F0F0F]';
     const activeClass =
       'border-[rgba(79,163,227,0.6)] bg-[rgba(79,163,227,0.18)] shadow-[0_0_25px_rgba(79,163,227,0.3)]';
     const inactiveClass =
-      'border-[rgba(79,163,227,0.35)] bg-[rgba(79,163,227,0.08)] hover:border-[rgba(79,163,227,0.55)] hover:bg-[rgba(79,163,227,0.15)]';
+      'border-[rgba(79,163,227,0.35)] bg-[rgba(79,163,227,0.08)] hover:border-[rgba(79,163,227,0.55)] hover:bg-[rgba(79,163,227,0.15)] active:bg-[rgba(79,163,227,0.15)]';
     const disabledClass = isStepAccessible(step)
       ? 'cursor-pointer'
       : 'cursor-not-allowed opacity-40 pointer-events-none';
@@ -110,9 +110,9 @@ export default function TicketFormF({
   };
 
   const renderUserDetailsSection = () => (
-    <div className="grid gap-6 md:grid-cols-2">
+    <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2">
       <div className="space-y-2">
-        <label htmlFor="name" className="text-sm font-medium text-[#F2F6FF]">
+        <label htmlFor="name" className="text-xs sm:text-sm font-medium text-[#F2F6FF]">
           Name
         </label>
         <input
@@ -124,12 +124,12 @@ export default function TicketFormF({
           onChange={handleUserDetailsChange}
           placeholder="Enter your full name"
           autoComplete="name"
-          className="w-full rounded-2xl border border-[rgba(104,110,161,0.55)] bg-[rgba(27,30,56,0.85)] px-5 py-4 text-sm text-[#F2F6FF] placeholder:text-[#A9B0D6] focus:outline-none focus:ring-2 focus:ring-[#4FA3E3]"
+          className="w-full rounded-xl sm:rounded-2xl border border-[rgba(104,110,161,0.55)] bg-[rgba(27,30,56,0.85)] px-4 py-3 sm:px-5 sm:py-4 text-xs sm:text-sm text-[#F2F6FF] placeholder:text-[#A9B0D6] focus:outline-none focus:ring-2 focus:ring-[#4FA3E3]"
           required
         />
       </div>
       <div className="space-y-2">
-        <label htmlFor="department" className="text-sm font-medium text-[#F2F6FF]">
+        <label htmlFor="department" className="text-xs sm:text-sm font-medium text-[#F2F6FF]">
           Department
         </label>
         <input
@@ -141,7 +141,7 @@ export default function TicketFormF({
           onChange={handleUserDetailsChange}
           placeholder="Enter your department"
           autoComplete="organization"
-          className="w-full rounded-2xl border border-[rgba(104,110,161,0.55)] bg-[rgba(27,30,56,0.85)] px-5 py-4 text-sm text-[#F2F6FF] placeholder:text-[#A9B0D6] focus:outline-none focus:ring-2 focus:ring-[#4FA3E3]"
+          className="w-full rounded-xl sm:rounded-2xl border border-[rgba(104,110,161,0.55)] bg-[rgba(27,30,56,0.85)] px-4 py-3 sm:px-5 sm:py-4 text-xs sm:text-sm text-[#F2F6FF] placeholder:text-[#A9B0D6] focus:outline-none focus:ring-2 focus:ring-[#4FA3E3]"
           required
         />
       </div>
@@ -150,14 +150,14 @@ export default function TicketFormF({
 
   const renderCategorySection = () => (
     <>
-      <p className="text-sm text-[#A9B0D6]">
+      <p className="text-xs sm:text-sm text-[#A9B0D6]">
         Choose the area that best matches the problem you experienced.
       </p>
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="grid gap-2 sm:gap-3 grid-cols-1 sm:grid-cols-2">
         {CATEGORY_OPTIONS.map((option) => (
           <label
             key={option}
-            className={`group relative flex cursor-pointer items-center gap-3 rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(79,163,227,0.08)] px-4 py-4 transition hover:border-[rgba(79,163,227,0.6)] hover:bg-[rgba(79,163,227,0.18)] ${
+            className={`group relative flex cursor-pointer items-center gap-2 sm:gap-3 rounded-lg sm:rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(79,163,227,0.08)] px-3 py-3 sm:px-4 sm:py-4 transition hover:border-[rgba(79,163,227,0.6)] hover:bg-[rgba(79,163,227,0.18)] active:bg-[rgba(79,163,227,0.18)] ${
               category === option ? 'ring-2 ring-[#4FA3E3]' : ''
             }`}
           >
@@ -169,12 +169,12 @@ export default function TicketFormF({
               onChange={() => setCategory(option)}
               className="sr-only"
             />
-            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(79,163,227,0.4)] bg-[rgba(79,163,227,0.2)] text-sm font-semibold text-[#F2F6FF]">
+            <span className="flex h-7 w-7 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-[rgba(79,163,227,0.4)] bg-[rgba(79,163,227,0.2)] text-xs sm:text-sm font-semibold text-[#F2F6FF]">
               {option.slice(0, 1)}
             </span>
             <div>
-              <p className="text-sm font-semibold text-[#F2F6FF]">{option}</p>
-              <p className="text-xs text-[#A9B0D6]">
+              <p className="text-xs sm:text-sm font-semibold text-[#F2F6FF]">{option}</p>
+              <p className="text-[10px] sm:text-xs text-[#A9B0D6]">
                 {option === 'Hardware'
                   ? 'Device issues like not opening, not clicking, etc.'
                   : option === 'Software'
@@ -191,8 +191,8 @@ export default function TicketFormF({
       </div>
 
       {category === 'Others' && (
-        <div className="rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(27,30,56,0.85)] p-4">
-          <label htmlFor="otherCategory" className="text-sm font-medium text-[#F2F6FF]">
+        <div className="rounded-lg sm:rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(27,30,56,0.85)] p-3 sm:p-4">
+          <label htmlFor="otherCategory" className="text-xs sm:text-sm font-medium text-[#F2F6FF]">
             Custom category details
           </label>
           <input
@@ -203,11 +203,11 @@ export default function TicketFormF({
             onChange={handleOtherCategoryDetailsChange}
             maxLength={25}
             autoComplete="off"
-            className="mt-2 w-full rounded-lg border border-[rgba(79,163,227,0.4)] bg-[rgba(16,18,31,0.9)] px-4 py-3 text-sm text-[#F2F6FF] placeholder:text-[#A9B0D6] focus:outline-none focus:ring-2 focus:ring-[#4FA3E3]"
+            className="mt-2 w-full rounded-lg border border-[rgba(79,163,227,0.4)] bg-[rgba(16,18,31,0.9)] px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm text-[#F2F6FF] placeholder:text-[#A9B0D6] focus:outline-none focus:ring-2 focus:ring-[#4FA3E3]"
             placeholder="Provide the specific system or workflow impacted"
             required
           />
-          <div className="mt-2 flex items-center justify-between text-xs text-[#A9B0D6]">
+          <div className="mt-2 flex items-center justify-between text-[10px] sm:text-xs text-[#A9B0D6]">
             <span></span>
             <span>{otherCategoryDetails.length}/25</span>
           </div>
@@ -218,12 +218,12 @@ export default function TicketFormF({
 
   const renderSeveritySection = () => (
     <>
-      <p className="text-sm text-[#A9B0D6]">How urgent is the issue?</p>
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-4">
+      <p className="text-xs sm:text-sm text-[#A9B0D6]">How urgent is the issue?</p>
+      <div className="grid grid-cols-2 gap-2 sm:gap-3 sm:grid-cols-4">
         {SEVERITY_OPTIONS.map((level) => (
           <label
             key={level}
-            className="group flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(79,163,227,0.08)] px-4 py-4 text-sm font-medium uppercase tracking-wide transition hover:border-[rgba(79,163,227,0.6)] hover:bg-[rgba(79,163,227,0.18)]"
+            className="group flex cursor-pointer flex-col items-center justify-center gap-1.5 sm:gap-2 rounded-lg sm:rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(79,163,227,0.08)] px-3 py-3 sm:px-4 sm:py-4 text-xs sm:text-sm font-medium uppercase tracking-wide transition hover:border-[rgba(79,163,227,0.6)] hover:bg-[rgba(79,163,227,0.18)] active:bg-[rgba(79,163,227,0.18)]"
             style={getSeverityHighlightStyles(level, severity === level)}
           >
             <input
@@ -234,9 +234,9 @@ export default function TicketFormF({
               onChange={() => setSeverity(level)}
               className="sr-only"
             />
-            <span className="text-xs text-[#A9B0D6]">Priority</span>
+            <span className="text-[10px] sm:text-xs text-[#A9B0D6]">Priority</span>
             <span
-              className="text-base font-semibold text-[#F2F6FF] transition"
+              className="text-sm sm:text-base font-semibold text-[#F2F6FF] transition"
               style={severity === level ? { color: severityColors[level] } : undefined}
             >
               {level}
@@ -250,7 +250,7 @@ export default function TicketFormF({
   const renderDetailsSection = () => (
     <>
       <div>
-        <label htmlFor="details" className="text-sm font-medium text-[#F2F6FF]">
+        <label htmlFor="details" className="text-xs sm:text-sm font-medium text-[#F2F6FF]">
           Enter the details of concern
         </label>
         <textarea
@@ -260,15 +260,15 @@ export default function TicketFormF({
           onChange={handleDetailsChange}
           maxLength={150}
           autoComplete="off"
-          className={`mt-3 h-32 w-full rounded-xl border ${
+          className={`mt-2 sm:mt-3 h-28 sm:h-32 w-full rounded-lg sm:rounded-xl border ${
             detailsError
               ? 'border-red-400 ring-2 ring-red-500/40'
               : 'border-[rgba(79,163,227,0.35)] focus:ring-[#4FA3E3]'
-          } bg-[rgba(27,30,56,0.85)] px-4 py-3 text-sm text-[#F2F6FF] placeholder:text-[#A9B0D6] focus:outline-none`}
+          } bg-[rgba(27,30,56,0.85)] px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm text-[#F2F6FF] placeholder:text-[#A9B0D6] focus:outline-none`}
           placeholder="Describe the issue in 150 characters or less..."
           required
         />
-        <div className="mt-2 flex items-center justify-between text-xs text-[#A9B0D6]">
+        <div className="mt-2 flex items-center justify-between text-[10px] sm:text-xs text-[#A9B0D6]">
           <span className={detailsError ? 'text-red-400' : ''}>{detailsError}</span>
           <span>{details.length}/150</span>
         </div>
@@ -277,40 +277,40 @@ export default function TicketFormF({
   );
 
   const renderSummarySection = () => (
-    <div className="space-y-6 text-sm text-[#A9B0D6]">
-      <div className="grid gap-4 md:grid-cols-2">
+    <div className="space-y-4 sm:space-y-6 text-xs sm:text-sm text-[#A9B0D6]">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
         <div>
-          <span className="block text-sm font-semibold uppercase tracking-[0.22em] text-[#A9B0D6]">
+          <span className="block text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-[#A9B0D6]">
             Name
           </span>
-          <span className="mt-2 block text-xl font-semibold text-[#F2F6FF]">
+          <span className="mt-1.5 sm:mt-2 block text-lg sm:text-xl font-semibold text-[#F2F6FF]">
             {userDetails.name || '—'}
           </span>
         </div>
         <div>
-          <span className="block text-sm font-semibold uppercase tracking-[0.22em] text-[#A9B0D6]">
+          <span className="block text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-[#A9B0D6]">
             Department
           </span>
-          <span className="mt-2 block text-xl font-semibold text-[#F2F6FF]">
+          <span className="mt-1.5 sm:mt-2 block text-lg sm:text-xl font-semibold text-[#F2F6FF]">
             {userDetails.department || '—'}
           </span>
         </div>
       </div>
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
         <div>
-          <span className="block text-sm font-semibold uppercase tracking-[0.22em] text-[#A9B0D6]">
+          <span className="block text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-[#A9B0D6]">
             Category
           </span>
-          <span className="mt-2 block text-xl font-semibold text-[#F2F6FF]">
+          <span className="mt-1.5 sm:mt-2 block text-lg sm:text-xl font-semibold text-[#F2F6FF]">
             {categorySummary}
           </span>
         </div>
         <div>
-          <span className="block text-sm font-semibold uppercase tracking-[0.22em] text-[#A9B0D6]">
+          <span className="block text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-[#A9B0D6]">
             Severity
           </span>
           <span
-            className="mt-2 inline-flex items-center rounded-full px-3 py-1 text-xl font-semibold"
+            className="mt-1.5 sm:mt-2 inline-flex items-center rounded-full px-2.5 py-0.5 sm:px-3 sm:py-1 text-base sm:text-xl font-semibold"
             style={
               severity
                 ? {
@@ -327,7 +327,7 @@ export default function TicketFormF({
       </div>
       <div>
         <span className="font-semibold text-[#F2F6FF]">Details</span>
-        <p className="mt-3 whitespace-pre-wrap text-base text-[#F2F6FF]/90">
+        <p className="mt-2 sm:mt-3 whitespace-pre-wrap text-sm sm:text-base text-[#F2F6FF]/90">
           {details || 'No details provided yet'}
         </p>
       </div>
@@ -337,7 +337,7 @@ export default function TicketFormF({
   return (
     <>
       {autofillStyles}
-      <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0F0F0F] px-8 py-4 font-sans text-[#F2F6FF] sm:px-10 sm:py-6">
+      <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0F0F0F] px-4 py-6 sm:px-8 sm:py-4 font-sans text-[#F2F6FF]">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(110,99,198,0.22),rgba(15,15,15,0)_55%)]"
@@ -345,21 +345,21 @@ export default function TicketFormF({
       <div className="absolute bottom-10 right-10 h-72 w-72 rounded-full bg-[#4FA3E3]/30 blur-[120px]" />
 
       <div className="relative z-10 w-full max-w-[90rem]">
-        <section className="rounded-3xl border border-[rgba(79,163,227,0.25)] bg-[rgba(53,59,103,0.2)] p-1 shadow-[0_25px_70px_rgba(11,14,31,0.6)] backdrop-blur">
-          <div className="rounded-[22px] border border-[rgba(79,163,227,0.2)] bg-[rgba(16,18,31,0.9)] px-12 py-8 sm:px-16 sm:py-10">
-            <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+        <section className="rounded-[20px] sm:rounded-3xl border border-[rgba(79,163,227,0.25)] bg-[rgba(53,59,103,0.2)] p-[1px] shadow-[0_25px_70px_rgba(11,14,31,0.6)] backdrop-blur">
+          <div className="rounded-[18px] sm:rounded-[22px] border border-[rgba(79,163,227,0.2)] bg-[rgba(16,18,31,0.9)] px-4 py-6 sm:px-12 sm:py-8 lg:px-16 lg:py-10">
+            <div className="mb-6 sm:mb-8 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
               <div>
-                <h1 className="text-3xl font-semibold text-[#F2F6FF] sm:text-4xl">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#F2F6FF]">
                   Submit a support ticket
                 </h1>
-                <p className="mt-2 text-sm text-[#A9B0D6]">
+                <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-[#A9B0D6]">
                   Start with your information, then describe the issue so our support team can assist quickly.
                 </p>
               </div>
             </div>
 
-            <form className="space-y-8" onSubmit={handleNext}>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            <form className="space-y-6 sm:space-y-8" onSubmit={handleNext}>
+              <div className="grid gap-3 sm:gap-4 grid-cols-2 lg:grid-cols-5">
                 <div
                   role="button"
                   tabIndex={0}
@@ -368,13 +368,13 @@ export default function TicketFormF({
                   aria-disabled={!isStepAccessible('userDetails')}
                   className={getCardClasses('userDetails')}
                 >
-                  <div className="flex items-center gap-3 text-base font-semibold uppercase tracking-[0.25em] text-[#F2F6FF]">
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(79,163,227,0.4)] bg-[rgba(79,163,227,0.18)]">
+                  <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F2F6FF]">
+                    <span className="inline-flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-full border border-[rgba(79,163,227,0.4)] bg-[rgba(79,163,227,0.18)] text-xs sm:text-base">
                       1
                     </span>
-                    User
+                    <span className="hidden sm:inline">User</span>
                   </div>
-                  <p className="mt-3 text-sm font-medium text-[#F2F6FF]">
+                  <p className="mt-2 sm:mt-3 text-xs sm:text-sm font-medium text-[#F2F6FF]">
                     Tell us who is submitting the ticket.
                   </p>
                 </div>
@@ -387,13 +387,13 @@ export default function TicketFormF({
                   aria-disabled={!isStepAccessible('category')}
                   className={getCardClasses('category')}
                 >
-                  <div className="flex items-center gap-3 text-base font-semibold uppercase tracking-[0.25em] text-[#F2F6FF]">
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(79,163,227,0.4)] bg-[rgba(79,163,227,0.18)]">
+                  <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F2F6FF]">
+                    <span className="inline-flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-full border border-[rgba(79,163,227,0.4)] bg-[rgba(79,163,227,0.18)] text-xs sm:text-base">
                       2
                     </span>
-                    Category
+                    <span className="hidden sm:inline">Category</span>
                   </div>
-                  <p className="mt-3 text-sm font-medium text-[#F2F6FF]">
+                  <p className="mt-2 sm:mt-3 text-xs sm:text-sm font-medium text-[#F2F6FF]">
                     What kind of problem did you experience?
                   </p>
                 </div>
@@ -406,13 +406,13 @@ export default function TicketFormF({
                   aria-disabled={!isStepAccessible('severity')}
                   className={getCardClasses('severity')}
                 >
-                  <div className="flex items-center gap-3 text-base font-semibold uppercase tracking-[0.25em] text-[#F2F6FF]">
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(79,163,227,0.4)] bg-[rgba(79,163,227,0.18)]">
+                  <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F2F6FF]">
+                    <span className="inline-flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-full border border-[rgba(79,163,227,0.4)] bg-[rgba(79,163,227,0.18)] text-xs sm:text-base">
                       3
                     </span>
-                    Severity
+                    <span className="hidden sm:inline">Severity</span>
                   </div>
-                  <p className="mt-3 text-sm font-medium text-[#F2F6FF]">How urgent is the issue?</p>
+                  <p className="mt-2 sm:mt-3 text-xs sm:text-sm font-medium text-[#F2F6FF]">How urgent is the issue?</p>
                 </div>
 
                 <div
@@ -423,13 +423,13 @@ export default function TicketFormF({
                   aria-disabled={!isStepAccessible('details')}
                   className={getCardClasses('details')}
                 >
-                  <div className="flex items-center gap-3 text-base font-semibold uppercase tracking-[0.25em] text-[#F2F6FF]">
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(79,163,227,0.4)] bg-[rgba(79,163,227,0.18)]">
+                  <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F2F6FF]">
+                    <span className="inline-flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-full border border-[rgba(79,163,227,0.4)] bg-[rgba(79,163,227,0.18)] text-xs sm:text-base">
                       4
                     </span>
-                    Details
+                    <span className="hidden sm:inline">Details</span>
                   </div>
-                  <p className="mt-3 text-sm font-medium text-[#F2F6FF]">
+                  <p className="mt-2 sm:mt-3 text-xs sm:text-sm font-medium text-[#F2F6FF]">
                     Enter the specifics of the issue.
                   </p>
                 </div>
@@ -442,17 +442,17 @@ export default function TicketFormF({
                   aria-disabled={!isStepAccessible('summary')}
                   className={getCardClasses('summary')}
                 >
-                  <div className="flex items-center gap-3 text-base font-semibold uppercase tracking-[0.25em] text-[#F2F6FF]">
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(79,163,227,0.4)] bg-[rgba(79,163,227,0.18)]">
+                  <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-base font-semibold uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[#F2F6FF]">
+                    <span className="inline-flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-full border border-[rgba(79,163,227,0.4)] bg-[rgba(79,163,227,0.18)] text-xs sm:text-base">
                       5
                     </span>
-                    Summary
+                    <span className="hidden sm:inline">Summary</span>
                   </div>
-                  <p className="mt-3 text-sm font-medium text-[#F2F6FF]">Review &amp; submit.</p>
+                  <p className="mt-2 sm:mt-3 text-xs sm:text-sm font-medium text-[#F2F6FF]">Review &amp; submit.</p>
                 </div>
               </div>
 
-              <div className="rounded-2xl border border-[rgba(79,163,227,0.25)] bg-[rgba(79,163,227,0.06)] px-6 py-6">
+              <div className="rounded-xl sm:rounded-2xl border border-[rgba(79,163,227,0.25)] bg-[rgba(79,163,227,0.06)] px-4 py-4 sm:px-6 sm:py-6">
                 {activeStep === 'userDetails' && renderUserDetailsSection()}
                 {activeStep === 'category' && renderCategorySection()}
                 {activeStep === 'severity' && renderSeveritySection()}
@@ -460,20 +460,20 @@ export default function TicketFormF({
                 {activeStep === 'summary' && renderSummarySection()}
               </div>
 
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex flex-col gap-2 sm:gap-3">
                 <button
                   type="button"
                   onClick={resetForm}
-                  className="w-full rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(27,30,56,0.65)] px-5 py-3 text-sm font-semibold text-[#F2F6FF] transition hover:border-[rgba(79,163,227,0.6)] hover:bg-[rgba(79,163,227,0.18)] sm:w-auto"
+                  className="w-full sm:w-auto rounded-lg sm:rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(27,30,56,0.65)] px-4 py-2.5 sm:px-5 sm:py-3 text-xs sm:text-sm font-semibold text-[#F2F6FF] transition hover:border-[rgba(79,163,227,0.6)] hover:bg-[rgba(79,163,227,0.18)] active:bg-[rgba(79,163,227,0.18)]"
                 >
                   Clear form
                 </button>
-                <div className="flex w-full justify-end gap-3 sm:w-auto">
+                <div className="flex w-full justify-end gap-2 sm:gap-3">
                   {stepOrder.indexOf(activeStep) > 0 && (
                     <button
                       type="button"
                       onClick={handleBack}
-                      className="w-full rounded-xl border border-[rgba(79,163,227,0.35)] bg-transparent px-5 py-3 text-sm font-semibold text-[#F2F6FF] transition hover:border-[rgba(79,163,227,0.6)] hover:bg-[rgba(79,163,227,0.15)] sm:w-auto"
+                      className="flex-1 sm:flex-none rounded-lg sm:rounded-xl border border-[rgba(79,163,227,0.35)] bg-transparent px-4 py-2.5 sm:px-5 sm:py-3 text-xs sm:text-sm font-semibold text-[#F2F6FF] transition hover:border-[rgba(79,163,227,0.6)] hover:bg-[rgba(79,163,227,0.15)] active:bg-[rgba(79,163,227,0.15)]"
                     >
                       Back
                     </button>
@@ -481,7 +481,7 @@ export default function TicketFormF({
                   <button
                     type="submit"
                     disabled={isNextDisabled()}
-                    className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-[#4B4F8F] via-[#6E63C6] to-[#4FA3E3] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[rgba(79,163,227,0.35)] transition transform-gpu hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-[#4FA3E3] focus:ring-offset-2 focus:ring-offset-[#0F0F0F] disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
+                    className="group relative flex flex-1 sm:flex-none items-center justify-center gap-2 overflow-hidden rounded-lg sm:rounded-xl bg-gradient-to-r from-[#4B4F8F] via-[#6E63C6] to-[#4FA3E3] px-4 py-2.5 sm:px-5 sm:py-3 text-xs sm:text-sm font-semibold text-white shadow-lg shadow-[rgba(79,163,227,0.35)] transition transform-gpu hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#4FA3E3] focus:ring-offset-2 focus:ring-offset-[#0F0F0F] disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     <span>{nextLabel}</span>
                     <svg
@@ -490,7 +490,7 @@ export default function TicketFormF({
                       viewBox="0 0 24 24"
                       strokeWidth={1.5}
                       stroke="currentColor"
-                      className="h-5 w-5 transition-transform group-hover:translate-x-1"
+                      className="h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1"
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6-6m6 6l-6 6" />
                     </svg>
