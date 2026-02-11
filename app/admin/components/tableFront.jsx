@@ -160,17 +160,70 @@ function TicketDetailsModal({ isOpen, ticket, onClose, onStatusChange, isSaving 
           onClick={(e) => e.stopPropagation()}
           style={{ position: 'relative', zIndex: 1 }}
         >
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 sm:top-5 sm:right-5 rounded-full bg-[rgba(79,163,227,0.2)] p-2 text-[#F2F6FF] hover:bg-[rgba(79,163,227,0.4)] active:bg-[rgba(79,163,227,0.4)] transition z-10"
-            aria-label="Close"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+          {/* Header with Close Button and Status Update */}
+          <div className="flex items-start justify-between mb-5 sm:mb-6 gap-4">
+            <h3 className="text-xl sm:text-2xl font-semibold text-[#F2F6FF]">Ticket Details</h3>
+            
+            <div className="flex items-center gap-2">
+              {/* Status Update Buttons */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => onStatusChange(ticket.id, 'open')}
+                  disabled={currentStatus === 'open' || currentStatus === 'complete' || isSaving}
+                  className={`rounded-lg border px-3 py-1.5 text-xs font-semibold transition ${
+                    currentStatus === 'open'
+                      ? 'bg-[#FF4C4C]/30 text-[#FF4C4C] border-[#FF4C4C]/60 cursor-default'
+                      : 'border-[rgba(79,163,227,0.35)] text-[#A9B0D6] hover:bg-[#FF4C4C]/20 hover:text-[#FF4C4C] hover:border-[#FF4C4C]/50 active:bg-[#FF4C4C]/20 disabled:opacity-40 disabled:cursor-not-allowed'
+                  }`}
+                  title="Mark as Open"
+                >
+                  Open
+                </button>
+                <button
+                  onClick={() => onStatusChange(ticket.id, 'in_progress')}
+                  disabled={currentStatus === 'in_progress' || currentStatus === 'complete' || isSaving}
+                  className={`rounded-lg border px-3 py-1.5 text-xs font-semibold transition ${
+                    currentStatus === 'in_progress'
+                      ? 'bg-[#FFB84C]/30 text-[#FFB84C] border-[#FFB84C]/60 cursor-default'
+                      : 'border-[rgba(79,163,227,0.35)] text-[#A9B0D6] hover:bg-[#FFB84C]/20 hover:text-[#FFB84C] hover:border-[#FFB84C]/50 active:bg-[#FFB84C]/20 disabled:opacity-40 disabled:cursor-not-allowed'
+                  }`}
+                  title="Mark as In Progress"
+                >
+                  Progress
+                </button>
+                <button
+                  onClick={() => onStatusChange(ticket.id, 'complete')}
+                  disabled={currentStatus === 'complete' || isSaving}
+                  className={`rounded-lg border px-3 py-1.5 text-xs font-semibold transition ${
+                    currentStatus === 'complete'
+                      ? 'bg-[#4CFF7C]/30 text-[#4CFF7C] border-[#4CFF7C]/60 cursor-default'
+                      : 'border-[rgba(79,163,227,0.35)] text-[#A9B0D6] hover:bg-[#4CFF7C]/20 hover:text-[#4CFF7C] hover:border-[#4CFF7C]/50 active:bg-[#4CFF7C]/20 disabled:opacity-40 disabled:cursor-not-allowed'
+                  }`}
+                  title="Mark as Complete"
+                >
+                  Complete
+                </button>
+              </div>
 
-          <h3 className="mb-5 sm:mb-6 text-xl sm:text-2xl font-semibold text-[#F2F6FF] pr-12">Ticket Details</h3>
+              {/* Close Button */}
+              <button
+                onClick={onClose}
+                className="rounded-full bg-[rgba(79,163,227,0.2)] p-2 text-[#F2F6FF] hover:bg-[rgba(79,163,227,0.4)] active:bg-[rgba(79,163,227,0.4)] transition"
+                aria-label="Close"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          {/* Completion Notice */}
+          {currentStatus === 'complete' && (
+            <div className="mb-5 text-xs text-[#4CFF7C] bg-[rgba(76,255,124,0.1)] border border-[rgba(76,255,124,0.3)] rounded-lg p-3">
+              ✓ This ticket has been completed and cannot be changed.
+            </div>
+          )}
 
           <div className="space-y-5 sm:space-y-6">
             {/* Requester Info */}
@@ -229,51 +282,6 @@ function TicketDetailsModal({ isOpen, ticket, onClose, onStatusChange, isSaving 
                 <p className="text-sm sm:text-base text-[#4CFF7C] font-medium">{resolvedDate}</p>
               </div>
             )}
-
-            {/* Status Update Section */}
-            <div className="pt-4 border-t border-[rgba(79,163,227,0.2)]">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-[#7D8FEA]">Update Status</p>
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                <button
-                  onClick={() => onStatusChange(ticket.id, 'open')}
-                  disabled={currentStatus === 'open' || currentStatus === 'complete' || isSaving}
-                  className={`flex-1 sm:flex-none rounded-xl border px-5 py-2.5 text-sm font-semibold transition ${
-                    currentStatus === 'open'
-                      ? 'bg-[#FF4C4C]/30 text-[#FF4C4C] border-[#FF4C4C]/60 cursor-default'
-                      : 'border-[rgba(79,163,227,0.35)] text-[#A9B0D6] hover:bg-[#FF4C4C]/20 hover:text-[#FF4C4C] hover:border-[#FF4C4C]/50 active:bg-[#FF4C4C]/20 disabled:opacity-40 disabled:cursor-not-allowed'
-                  }`}
-                >
-                  Open
-                </button>
-                <button
-                  onClick={() => onStatusChange(ticket.id, 'in_progress')}
-                  disabled={currentStatus === 'in_progress' || currentStatus === 'complete' || isSaving}
-                  className={`flex-1 sm:flex-none rounded-xl border px-5 py-2.5 text-sm font-semibold transition ${
-                    currentStatus === 'in_progress'
-                      ? 'bg-[#FFB84C]/30 text-[#FFB84C] border-[#FFB84C]/60 cursor-default'
-                      : 'border-[rgba(79,163,227,0.35)] text-[#A9B0D6] hover:bg-[#FFB84C]/20 hover:text-[#FFB84C] hover:border-[#FFB84C]/50 active:bg-[#FFB84C]/20 disabled:opacity-40 disabled:cursor-not-allowed'
-                  }`}
-                >
-                  In Progress
-                </button>
-                <button
-                  onClick={() => onStatusChange(ticket.id, 'complete')}
-                  disabled={currentStatus === 'complete' || isSaving}
-                  className={`flex-1 sm:flex-none rounded-xl border px-5 py-2.5 text-sm font-semibold transition ${
-                    currentStatus === 'complete'
-                      ? 'bg-[#4CFF7C]/30 text-[#4CFF7C] border-[#4CFF7C]/60 cursor-default'
-                      : 'border-[rgba(79,163,227,0.35)] text-[#A9B0D6] hover:bg-[#4CFF7C]/20 hover:text-[#4CFF7C] hover:border-[#4CFF7C]/50 active:bg-[#4CFF7C]/20 disabled:opacity-40 disabled:cursor-not-allowed'
-                  }`}
-                >
-                  Complete
-                </button>
-              </div>
-              {currentStatus === 'complete' && (
-                <p className="mt-3 text-xs text-[#A9B0D6] bg-[rgba(79,163,227,0.1)] rounded-lg p-3">
-                  ℹ️ This ticket has been completed and cannot be changed.
-                </p>
-              )}
-            </div>
           </div>
         </div>
       </div>
