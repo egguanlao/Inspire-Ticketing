@@ -50,12 +50,12 @@ function SolutionModal({ isOpen, ticket, onSubmit, onCancel, isSaving }) {
   };
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4">
-      <div className="w-full max-w-lg rounded-2xl border border-[rgba(79,163,227,0.35)] bg-[rgba(18,21,36,0.95)] p-6 shadow-2xl">
-        <h3 className="mb-4 text-xl font-semibold text-[#F2F6FF]">
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-3 sm:p-4">
+      <div className="w-full max-w-lg rounded-xl sm:rounded-2xl border border-[rgba(79,163,227,0.35)] bg-[rgba(18,21,36,0.95)] p-4 sm:p-6 shadow-2xl">
+        <h3 className="mb-3 sm:mb-4 text-lg sm:text-xl font-semibold text-[#F2F6FF]">
           Complete Ticket - Solution Required
         </h3>
-        <p className="mb-4 text-sm text-[#A9B0D6]">
+        <p className="mb-3 sm:mb-4 text-xs sm:text-sm text-[#A9B0D6]">
           Please provide the solution for ticket from <span className="font-semibold text-[#F2F6FF]">{ticket.name}</span>
         </p>
         <form onSubmit={handleSubmit}>
@@ -65,9 +65,9 @@ function SolutionModal({ isOpen, ticket, onSubmit, onCancel, isSaving }) {
             placeholder="Describe the solution or fix applied..."
             rows={4}
             required
-            className="mb-4 w-full rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(12,15,26,0.9)] px-4 py-3 text-sm text-[#F2F6FF] placeholder:text-[#7D8FEA] focus:border-[rgba(79,163,227,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(79,163,227,0.3)]"
+            className="mb-3 sm:mb-4 w-full rounded-lg sm:rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(12,15,26,0.9)] px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm text-[#F2F6FF] placeholder:text-[#7D8FEA] focus:border-[rgba(79,163,227,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(79,163,227,0.3)]"
           />
-          <div className="flex justify-end gap-3">
+          <div className="flex justify-end gap-2 sm:gap-3">
             <button
               type="button"
               onClick={() => {
@@ -75,14 +75,14 @@ function SolutionModal({ isOpen, ticket, onSubmit, onCancel, isSaving }) {
                 onCancel();
               }}
               disabled={isSaving}
-              className="rounded-xl border border-[rgba(79,163,227,0.35)] bg-transparent px-5 py-2.5 text-sm font-semibold text-[#F2F6FF] transition hover:bg-[rgba(79,163,227,0.15)] disabled:opacity-50"
+              className="rounded-lg sm:rounded-xl border border-[rgba(79,163,227,0.35)] bg-transparent px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold text-[#F2F6FF] transition hover:bg-[rgba(79,163,227,0.15)] active:bg-[rgba(79,163,227,0.15)] disabled:opacity-50"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSaving || !solution.trim()}
-              className="rounded-xl bg-gradient-to-r from-[#4B4F8F] via-[#6E63C6] to-[#4FA3E3] px-5 py-2.5 text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-50"
+              className="rounded-lg sm:rounded-xl bg-gradient-to-r from-[#4B4F8F] via-[#6E63C6] to-[#4FA3E3] px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold text-white shadow-lg transition hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50"
             >
               {isSaving ? 'Saving...' : 'Mark Complete'}
             </button>
@@ -101,41 +101,41 @@ function TicketDetailsModal({ isOpen, ticket, onClose, onStatusChange, isSaving 
   const resolvedDate = ticket.closedAt ? new Date(ticket.closedAt).toLocaleString() : null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl border border-[rgba(79,163,227,0.35)] bg-[rgba(18,21,36,0.95)] p-6 shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-3 sm:p-4">
+      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-xl sm:rounded-2xl border border-[rgba(79,163,227,0.35)] bg-[rgba(18,21,36,0.95)] p-4 sm:p-6 shadow-2xl">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 rounded-full bg-[rgba(79,163,227,0.2)] p-2 text-[#F2F6FF] hover:bg-[rgba(79,163,227,0.4)] transition"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 rounded-full bg-[rgba(79,163,227,0.2)] p-1.5 sm:p-2 text-[#F2F6FF] hover:bg-[rgba(79,163,227,0.4)] active:bg-[rgba(79,163,227,0.4)] transition"
           aria-label="Close"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4 sm:w-5 sm:h-5">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
 
-        <h3 className="mb-6 text-xl font-semibold text-[#F2F6FF]">Ticket Details</h3>
+        <h3 className="mb-4 sm:mb-6 text-lg sm:text-xl font-semibold text-[#F2F6FF] pr-8">Ticket Details</h3>
 
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {/* Requester Info */}
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#7D8FEA]">Requester</p>
-              <p className="mt-1 text-lg font-semibold text-[#F2F6FF]">{ticket.name}</p>
+              <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#7D8FEA]">Requester</p>
+              <p className="mt-1 text-base sm:text-lg font-semibold text-[#F2F6FF]">{ticket.name}</p>
             </div>
-            <span className="rounded-full border border-[rgba(79,163,227,0.35)] bg-[rgba(79,163,227,0.12)] px-3 py-1 text-xs font-semibold uppercase text-[#A9B0D6]">
+            <span className="rounded-full border border-[rgba(79,163,227,0.35)] bg-[rgba(79,163,227,0.12)] px-2 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-semibold uppercase text-[#A9B0D6]">
               {ticket.department || 'Unassigned'}
             </span>
           </div>
 
           {/* Category & Severity */}
-          <div className="flex flex-wrap gap-6">
+          <div className="flex flex-wrap gap-4 sm:gap-6">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#7D8FEA]">Category</p>
-              <p className="mt-1 text-sm text-[#F2F6FF]">{ticket.category}</p>
+              <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#7D8FEA]">Category</p>
+              <p className="mt-1 text-xs sm:text-sm text-[#F2F6FF]">{ticket.category}</p>
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#7D8FEA]">Severity</p>
-              <span className={`mt-1 inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${severityBadgeStyles[ticket.severity] ?? 'border-[#4FA3E3]/40 text-[#F2F6FF]'}`}>
+              <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#7D8FEA]">Severity</p>
+              <span className={`mt-1 inline-flex rounded-full border px-2 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-semibold ${severityBadgeStyles[ticket.severity] ?? 'border-[#4FA3E3]/40 text-[#F2F6FF]'}`}>
                 {ticket.severity}
               </span>
             </div>
@@ -143,14 +143,14 @@ function TicketDetailsModal({ isOpen, ticket, onClose, onStatusChange, isSaving 
 
           {/* Details */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-[#7D8FEA]">Details</p>
-            <p className="mt-2 whitespace-pre-wrap break-words text-sm text-[#C5CCE6]">{ticket.details}</p>
+            <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#7D8FEA]">Details</p>
+            <p className="mt-2 whitespace-pre-wrap break-words text-xs sm:text-sm text-[#C5CCE6]">{ticket.details}</p>
           </div>
 
           {/* Submitted Date */}
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-[#7D8FEA]">Submitted</p>
-            <p className="mt-1 text-sm text-[#A9B0D6]">
+            <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#7D8FEA]">Submitted</p>
+            <p className="mt-1 text-xs sm:text-sm text-[#A9B0D6]">
               {ticket.submittedAtLocal ?? (ticket.submittedAt?.toDate?.().toLocaleString() ?? 'Unknown')}
             </p>
           </div>
@@ -158,8 +158,8 @@ function TicketDetailsModal({ isOpen, ticket, onClose, onStatusChange, isSaving 
           {/* Solution (if complete) */}
           {currentStatus === 'complete' && ticket.adminSolution && (
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#7D8FEA]">Solution</p>
-              <p className="mt-2 whitespace-pre-wrap break-words text-sm text-[#C5CCE6] rounded-xl border border-[rgba(79,163,227,0.2)] bg-[rgba(12,15,26,0.6)] p-3">
+              <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#7D8FEA]">Solution</p>
+              <p className="mt-2 whitespace-pre-wrap break-words text-xs sm:text-sm text-[#C5CCE6] rounded-lg sm:rounded-xl border border-[rgba(79,163,227,0.2)] bg-[rgba(12,15,26,0.6)] p-2 sm:p-3">
                 {ticket.adminSolution}
               </p>
             </div>
@@ -168,22 +168,22 @@ function TicketDetailsModal({ isOpen, ticket, onClose, onStatusChange, isSaving 
           {/* Resolved Date */}
           {resolvedDate && (
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#7D8FEA]">Resolved</p>
-              <p className="mt-1 text-sm text-[#4CFF7C]">{resolvedDate}</p>
+              <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#7D8FEA]">Resolved</p>
+              <p className="mt-1 text-xs sm:text-sm text-[#4CFF7C]">{resolvedDate}</p>
             </div>
           )}
 
           {/* Status Update Section */}
-          <div className="mt-6 pt-4 border-t border-[rgba(79,163,227,0.2)]">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-[#7D8FEA]">Update Status</p>
+          <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-[rgba(79,163,227,0.2)]">
+            <p className="mb-2 sm:mb-3 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-[#7D8FEA]">Update Status</p>
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => onStatusChange(ticket.id, 'open')}
                 disabled={currentStatus === 'open' || currentStatus === 'complete' || isSaving}
-                className={`rounded-xl border px-4 py-2 text-sm font-semibold transition ${
+                className={`rounded-lg sm:rounded-xl border px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold transition ${
                   currentStatus === 'open'
                     ? 'bg-[#FF4C4C]/30 text-[#FF4C4C] border-[#FF4C4C]/60 cursor-default'
-                    : 'border-[rgba(79,163,227,0.35)] text-[#A9B0D6] hover:bg-[#FF4C4C]/20 hover:text-[#FF4C4C] hover:border-[#FF4C4C]/50 disabled:opacity-40 disabled:cursor-not-allowed'
+                    : 'border-[rgba(79,163,227,0.35)] text-[#A9B0D6] hover:bg-[#FF4C4C]/20 hover:text-[#FF4C4C] hover:border-[#FF4C4C]/50 active:bg-[#FF4C4C]/20 disabled:opacity-40 disabled:cursor-not-allowed'
                 }`}
               >
                 Open
@@ -191,10 +191,10 @@ function TicketDetailsModal({ isOpen, ticket, onClose, onStatusChange, isSaving 
               <button
                 onClick={() => onStatusChange(ticket.id, 'in_progress')}
                 disabled={currentStatus === 'in_progress' || currentStatus === 'complete' || isSaving}
-                className={`rounded-xl border px-4 py-2 text-sm font-semibold transition ${
+                className={`rounded-lg sm:rounded-xl border px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold transition ${
                   currentStatus === 'in_progress'
                     ? 'bg-[#FFB84C]/30 text-[#FFB84C] border-[#FFB84C]/60 cursor-default'
-                    : 'border-[rgba(79,163,227,0.35)] text-[#A9B0D6] hover:bg-[#FFB84C]/20 hover:text-[#FFB84C] hover:border-[#FFB84C]/50 disabled:opacity-40 disabled:cursor-not-allowed'
+                    : 'border-[rgba(79,163,227,0.35)] text-[#A9B0D6] hover:bg-[#FFB84C]/20 hover:text-[#FFB84C] hover:border-[#FFB84C]/50 active:bg-[#FFB84C]/20 disabled:opacity-40 disabled:cursor-not-allowed'
                 }`}
               >
                 In Progress
@@ -202,17 +202,17 @@ function TicketDetailsModal({ isOpen, ticket, onClose, onStatusChange, isSaving 
               <button
                 onClick={() => onStatusChange(ticket.id, 'complete')}
                 disabled={currentStatus === 'complete' || isSaving}
-                className={`rounded-xl border px-4 py-2 text-sm font-semibold transition ${
+                className={`rounded-lg sm:rounded-xl border px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold transition ${
                   currentStatus === 'complete'
                     ? 'bg-[#4CFF7C]/30 text-[#4CFF7C] border-[#4CFF7C]/60 cursor-default'
-                    : 'border-[rgba(79,163,227,0.35)] text-[#A9B0D6] hover:bg-[#4CFF7C]/20 hover:text-[#4CFF7C] hover:border-[#4CFF7C]/50 disabled:opacity-40 disabled:cursor-not-allowed'
+                    : 'border-[rgba(79,163,227,0.35)] text-[#A9B0D6] hover:bg-[#4CFF7C]/20 hover:text-[#4CFF7C] hover:border-[#4CFF7C]/50 active:bg-[#4CFF7C]/20 disabled:opacity-40 disabled:cursor-not-allowed'
                 }`}
               >
                 Complete
               </button>
             </div>
             {currentStatus === 'complete' && (
-              <p className="mt-2 text-xs text-[#A9B0D6]">This ticket has been completed and cannot be changed.</p>
+              <p className="mt-2 text-[10px] sm:text-xs text-[#A9B0D6]">This ticket has been completed and cannot be changed.</p>
             )}
           </div>
         </div>
@@ -313,16 +313,16 @@ export default function TableFront({ tickets, isLoading, error, formatDate }) {
           scrollbarColor: 'rgba(79,163,227,0.3) transparent'
         }}
       >
-        <table className="w-full table-auto border-separate border-spacing-y-3 text-center text-sm text-[#C5CCE6]">
+        <table className="w-full min-w-[800px] table-auto border-separate border-spacing-y-2 sm:border-spacing-y-3 text-center text-xs sm:text-sm text-[#C5CCE6]">
           <thead className="sticky top-0 z-10 bg-[rgba(18,21,36,0.95)] backdrop-blur-sm">
-            <tr className="text-xs font-semibold uppercase tracking-[0.22em] text-[#7D8FEA]">
-              <th className="rounded-l-2xl bg-[rgba(27,30,56,0.35)] px-4 py-3 text-center">Name</th>
-              <th className="bg-[rgba(27,30,56,0.35)] px-4 py-3 text-center">Department</th>
-              <th className="bg-[rgba(27,30,56,0.35)] px-4 py-3 text-center">Category</th>
-              <th className="bg-[rgba(27,30,56,0.35)] px-4 py-3 text-center">Severity</th>
-              <th className="bg-[rgba(27,30,56,0.35)] px-4 py-3 text-center">Details</th>
-              <th className="bg-[rgba(27,30,56,0.35)] px-4 py-3 text-center">Submitted</th>
-              <th className="rounded-r-2xl bg-[rgba(27,30,56,0.35)] px-4 py-3 text-center">Status</th>
+            <tr className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.18em] sm:tracking-[0.22em] text-[#7D8FEA]">
+              <th className="rounded-l-xl sm:rounded-l-2xl bg-[rgba(27,30,56,0.35)] px-2 py-2 sm:px-4 sm:py-3 text-center">Name</th>
+              <th className="bg-[rgba(27,30,56,0.35)] px-2 py-2 sm:px-4 sm:py-3 text-center">Department</th>
+              <th className="bg-[rgba(27,30,56,0.35)] px-2 py-2 sm:px-4 sm:py-3 text-center">Category</th>
+              <th className="bg-[rgba(27,30,56,0.35)] px-2 py-2 sm:px-4 sm:py-3 text-center">Severity</th>
+              <th className="bg-[rgba(27,30,56,0.35)] px-2 py-2 sm:px-4 sm:py-3 text-center">Details</th>
+              <th className="bg-[rgba(27,30,56,0.35)] px-2 py-2 sm:px-4 sm:py-3 text-center">Submitted</th>
+              <th className="rounded-r-xl sm:rounded-r-2xl bg-[rgba(27,30,56,0.35)] px-2 py-2 sm:px-4 sm:py-3 text-center">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -334,43 +334,43 @@ export default function TableFront({ tickets, isLoading, error, formatDate }) {
                 <tr
                   key={ticket.id}
                   onClick={() => setSelectedTicket(ticket)}
-                  className="cursor-pointer rounded-2xl border border-[rgba(79,163,227,0.25)] bg-[rgba(16,18,31,0.85)] text-sm text-[#F2F6FF] transition-all duration-200 hover:border-[rgba(79,163,227,0.6)] hover:bg-[rgba(79,163,227,0.15)] hover:shadow-[0_0_20px_rgba(79,163,227,0.3)]"
+                  className="cursor-pointer rounded-xl sm:rounded-2xl border border-[rgba(79,163,227,0.25)] bg-[rgba(16,18,31,0.85)] text-xs sm:text-sm text-[#F2F6FF] transition-all duration-200 hover:border-[rgba(79,163,227,0.6)] hover:bg-[rgba(79,163,227,0.15)] hover:shadow-[0_0_20px_rgba(79,163,227,0.3)] active:bg-[rgba(79,163,227,0.15)]"
                 >
-                  <td className="rounded-l-2xl border border-transparent px-4 py-4 text-center text-[#F2F6FF]">
+                  <td className="rounded-l-xl sm:rounded-l-2xl border border-transparent px-2 py-3 sm:px-4 sm:py-4 text-center text-[#F2F6FF]">
                     {ticket.name}
                   </td>
-                  <td className="border border-transparent px-4 py-4 text-center text-[#A9B0D6]">
+                  <td className="border border-transparent px-2 py-3 sm:px-4 sm:py-4 text-center text-[#A9B0D6]">
                     {ticket.department || 'Unassigned'}
                   </td>
-                  <td className="border border-transparent px-4 py-4 text-center" title={ticket.category}>
+                  <td className="border border-transparent px-2 py-3 sm:px-4 sm:py-4 text-center" title={ticket.category}>
                     {ticket.category && ticket.category.length > 20
                       ? `${ticket.category.slice(0, 20)}...`
                       : ticket.category}
                   </td>
-                  <td className="border border-transparent px-4 py-4 text-center">
+                  <td className="border border-transparent px-2 py-3 sm:px-4 sm:py-4 text-center">
                     <span
-                      className={`inline-flex rounded-full border px-3 py-1 text-xs font-semibold ${
+                      className={`inline-flex rounded-full border px-2 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-semibold ${
                         severityBadgeStyles[ticket.severity] ?? 'border-[#4FA3E3]/40 text-[#F2F6FF]'
                       }`}
                     >
                       {ticket.severity}
                     </span>
                   </td>
-                  <td className="border border-transparent px-4 py-4 text-center text-[#C5CCE6]">
+                  <td className="border border-transparent px-2 py-3 sm:px-4 sm:py-4 text-center text-[#C5CCE6]">
                     <div className="max-w-xs mx-auto" title={ticket.details}>
                       {ticket.details && ticket.details.length > 20
                         ? `${ticket.details.slice(0, 22)}...`
                         : ticket.details}
                     </div>
                   </td>
-                  <td className="border border-transparent px-4 py-4 text-center text-[#A9B0D6]">
+                  <td className="border border-transparent px-2 py-3 sm:px-4 sm:py-4 text-center text-[#A9B0D6]">
                     {formatDate(ticket)}
                   </td>
-                  <td className="rounded-r-2xl border border-transparent px-4 py-4 text-center">
+                  <td className="rounded-r-xl sm:rounded-r-2xl border border-transparent px-2 py-3 sm:px-4 sm:py-4 text-center">
                     <button
                       onClick={(e) => handleQuickStatusChange(e, ticket)}
                       disabled={isComplete || isSaving}
-                      className={`inline-flex rounded-full border px-3 py-1 text-xs font-semibold capitalize transition ${
+                      className={`inline-flex rounded-full border px-2 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-semibold capitalize transition ${
                         statusBadgeStyles[currentStatus] ?? 'border-[#6E63C6]/40 text-[#F2F6FF]'
                       } ${!isComplete ? 'cursor-pointer' : 'cursor-default'}`}
                       title={isComplete ? 'Completed' : `Click to ${currentStatus === 'open' ? 'start progress' : 'complete'}`}

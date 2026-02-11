@@ -402,7 +402,7 @@ const playReminderAudioFiveTimes = async () => {
 
   return (
     <>
-    <main className="relative flex h-screen flex-col overflow-hidden bg-[#08090E] px-6 py-10 text-[#F2F6FF]">
+    <main className="relative flex h-screen flex-col overflow-hidden bg-[#08090E] px-3 py-4 sm:px-6 sm:py-10 text-[#F2F6FF]">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(110,99,198,0.18),rgba(8,9,14,0)_55%)]"
@@ -410,19 +410,19 @@ const playReminderAudioFiveTimes = async () => {
       <div className="absolute top-16 right-10 h-72 w-72 rounded-full bg-[#4FA3E3]/30 blur-[140px]" />
       <div className="absolute bottom-16 left-12 h-80 w-80 rounded-full bg-[#6E63C6]/35 blur-[170px]" />
 
-      <div className="fixed top-6 left-6 z-20">
+      <div className="fixed top-3 left-3 sm:top-6 sm:left-6 z-20">
         <button
           type="button"
           onClick={handleLogoutClick}
-          className="rounded-2xl border border-[rgba(79,163,227,0.4)] bg-[rgba(12,15,26,0.9)] px-4 py-2 text-sm font-semibold text-[#F2F6FF] shadow-[0_10px_30px_rgba(5,6,10,0.5)] transition hover:bg-[rgba(79,163,227,0.18)] focus:outline-none focus:ring-2 focus:ring-[#4FA3E3] focus:ring-offset-2 focus:ring-offset-[#08090E]"
+          className="rounded-xl sm:rounded-2xl border border-[rgba(79,163,227,0.4)] bg-[rgba(12,15,26,0.9)] px-3 py-2 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-[#F2F6FF] shadow-[0_10px_30px_rgba(5,6,10,0.5)] transition hover:bg-[rgba(79,163,227,0.18)] active:bg-[rgba(79,163,227,0.18)] focus:outline-none focus:ring-2 focus:ring-[#4FA3E3] focus:ring-offset-2 focus:ring-offset-[#08090E]"
         >
           Log out
         </button>
       </div>
 
       {/* Reminder Toggle - Upper Right Corner */}
-      <div className="fixed top-6 right-6 z-20">
-        <div className="flex items-center gap-3 rounded-2xl border border-[rgba(79,163,227,0.35)] bg-[rgba(18,21,36,0.9)] px-4 py-3 backdrop-blur">
+      <div className="fixed top-3 right-3 sm:top-6 sm:right-6 z-20">
+        <div className="flex items-center gap-2 sm:gap-3 rounded-xl sm:rounded-2xl border border-[rgba(79,163,227,0.35)] bg-[rgba(18,21,36,0.9)] px-3 py-2 sm:px-4 sm:py-3 backdrop-blur">
           <label className="relative inline-flex cursor-pointer items-center">
             <input
               type="checkbox"
@@ -430,22 +430,22 @@ const playReminderAudioFiveTimes = async () => {
               onChange={(e) => setReminderEnabled(e.target.checked)}
               className="peer sr-only"
             />
-            <div className="relative h-6 w-11 rounded-full bg-[rgba(79,163,227,0.2)] border border-[rgba(79,163,227,0.35)] transition-all duration-300 ease-in-out peer-checked:bg-[#4CFF7C] peer-checked:border-[#4CFF7C]">
-              <div className={`absolute top-0.5 h-5 w-5 rounded-full bg-[#F2F6FF] shadow-md transition-all duration-300 ease-in-out ${
-                reminderEnabled ? 'left-[22px]' : 'left-0.5'
+            <div className="relative h-5 w-9 sm:h-6 sm:w-11 rounded-full bg-[rgba(79,163,227,0.2)] border border-[rgba(79,163,227,0.35)] transition-all duration-300 ease-in-out peer-checked:bg-[#4CFF7C] peer-checked:border-[#4CFF7C]">
+              <div className={`absolute top-0.5 h-4 w-4 sm:h-5 sm:w-5 rounded-full bg-[#F2F6FF] shadow-md transition-all duration-300 ease-in-out ${
+                reminderEnabled ? 'left-[18px] sm:left-[22px]' : 'left-0.5'
               }`}></div>
             </div>
           </label>
-          <span className="text-sm text-[#A9B0D6]">Reminder</span>
+          <span className="text-xs sm:text-sm text-[#A9B0D6] hidden sm:inline">Reminder</span>
           {reminderEnabled && hasUserInteracted && (
-            <span className="text-xs font-medium text-[#4FA3E3]">
-              Next check: {timerCountdown}s
+            <span className="text-[10px] sm:text-xs font-medium text-[#4FA3E3] whitespace-nowrap">
+              {timerCountdown}s
             </span>
           )}
         </div>
       </div>
 
-      <section className="relative z-10 mx-auto flex w-full max-w-[1200px] flex-col gap-4 h-full overflow-hidden">
+      <section className="relative z-10 mx-auto flex w-full max-w-[1200px] flex-col gap-3 sm:gap-4 h-full overflow-hidden pt-12 sm:pt-0">
         {/* Frontend: Header UI Component */}
         <div className="flex-shrink-0">
           <HeaderFront
@@ -456,17 +456,18 @@ const playReminderAudioFiveTimes = async () => {
           />
         </div>
 
-        <section className="relative flex flex-col flex-1 min-h-0 rounded-[28px] border border-[rgba(79,163,227,0.35)] bg-[rgba(18,21,36,0.9)] shadow-[0_20px_60px_rgba(8,12,30,0.55)] backdrop-blur overflow-hidden">
-          <div className="flex flex-col h-full rounded-[26px] border border-[rgba(79,163,227,0.2)] px-8 py-6 overflow-hidden">
+        <section className="relative flex flex-col flex-1 min-h-0 rounded-[20px] sm:rounded-[28px] border border-[rgba(79,163,227,0.35)] bg-[rgba(18,21,36,0.9)] shadow-[0_20px_60px_rgba(8,12,30,0.55)] backdrop-blur overflow-hidden">
+          <div className="flex flex-col h-full rounded-[18px] sm:rounded-[26px] border border-[rgba(79,163,227,0.2)] px-3 py-4 sm:px-8 sm:py-6 overflow-hidden">
             {/* Title, Search and Filter Section - All in One Row */}
-            <div className="mb-4 flex flex-col lg:flex-row lg:items-center gap-3 flex-shrink-0">
+            <div className="mb-3 sm:mb-4 flex flex-col gap-2 sm:gap-3 flex-shrink-0">
               {/* Title */}
-              <div className="flex items-center gap-3 flex-shrink-0">
-                <h2 className="text-2xl font-semibold text-[#F2F6FF] whitespace-nowrap">Ticket Registry</h2>
+              <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+                <h2 className="text-lg sm:text-2xl font-semibold text-[#F2F6FF] whitespace-nowrap">Ticket Registry</h2>
                 {isLoading && (
-                  <span className="inline-flex items-center gap-2 rounded-full border border-[rgba(79,163,227,0.3)] bg-[rgba(79,163,227,0.12)] px-4 py-2 text-sm text-[#A9B0D6]">
-                    <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-[#6E63C6]" />
-                    Syncing latest entries…
+                  <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-[rgba(79,163,227,0.3)] bg-[rgba(79,163,227,0.12)] px-2 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm text-[#A9B0D6]">
+                    <span className="h-2 w-2 sm:h-2.5 sm:w-2.5 animate-pulse rounded-full bg-[#6E63C6]" />
+                    <span className="hidden sm:inline">Syncing latest entries…</span>
+                    <span className="sm:hidden">Syncing…</span>
                   </span>
                 )}
               </div>
@@ -478,7 +479,7 @@ const playReminderAudioFiveTimes = async () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search tickets..."
-                  className="w-full rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(12,15,26,0.9)] px-3 py-2 pl-9 text-sm text-[#F2F6FF] placeholder:text-[#7D8FEA] focus:border-[rgba(79,163,227,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(79,163,227,0.3)]"
+                  className="w-full rounded-lg sm:rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(12,15,26,0.9)] px-3 py-2 pl-8 sm:pl-9 text-xs sm:text-sm text-[#F2F6FF] placeholder:text-[#7D8FEA] focus:border-[rgba(79,163,227,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(79,163,227,0.3)]"
                 />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -486,14 +487,14 @@ const playReminderAudioFiveTimes = async () => {
                   viewBox="0 0 24 24"
                   strokeWidth={2}
                   stroke="currentColor"
-                  className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#7D8FEA]"
+                  className="absolute left-2 sm:left-2.5 top-1/2 h-3.5 w-3.5 sm:h-4 sm:w-4 -translate-y-1/2 text-[#7D8FEA]"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                 </svg>
                 {searchQuery && (
                   <button
                     onClick={() => setSearchQuery('')}
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-full p-0.5 text-[#7D8FEA] hover:text-[#F2F6FF] transition"
+                    className="absolute right-2 sm:right-2.5 top-1/2 -translate-y-1/2 rounded-full p-0.5 text-[#7D8FEA] hover:text-[#F2F6FF] active:text-[#F2F6FF] transition"
                     aria-label="Clear search"
                   >
                     <svg
@@ -502,7 +503,7 @@ const playReminderAudioFiveTimes = async () => {
                       viewBox="0 0 24 24"
                       strokeWidth={2}
                       stroke="currentColor"
-                      className="h-4 w-4"
+                      className="h-3.5 w-3.5 sm:h-4 sm:w-4"
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -511,13 +512,13 @@ const playReminderAudioFiveTimes = async () => {
               </div>
 
               {/* Filter Dropdowns */}
-              <div className="flex items-center gap-2 flex-shrink-0">
+              <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0 w-full sm:w-auto">
                 {/* Severity Filter */}
-                <div className="w-[140px]">
+                <div className="flex-1 sm:flex-none sm:w-[140px]">
                   <select
                     value={filterSeverity}
                     onChange={(e) => setFilterSeverity(e.target.value)}
-                    className="w-full rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(12,15,26,0.9)] px-3 py-2 text-sm text-[#F2F6FF] focus:border-[rgba(79,163,227,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(79,163,227,0.3)]"
+                    className="w-full rounded-lg sm:rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(12,15,26,0.9)] px-2 py-2 sm:px-3 text-xs sm:text-sm text-[#F2F6FF] focus:border-[rgba(79,163,227,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(79,163,227,0.3)]"
                   >
                     <option value="all">All Severities</option>
                     <option value="Critical">Critical</option>
@@ -528,11 +529,11 @@ const playReminderAudioFiveTimes = async () => {
                 </div>
 
                 {/* Department Filter */}
-                <div className="w-[140px]">
+                <div className="flex-1 sm:flex-none sm:w-[140px]">
                   <select
                     value={filterDepartment}
                     onChange={(e) => setFilterDepartment(e.target.value)}
-                    className="w-full rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(12,15,26,0.9)] px-3 py-2 text-sm text-[#F2F6FF] focus:border-[rgba(79,163,227,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(79,163,227,0.3)]"
+                    className="w-full rounded-lg sm:rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(12,15,26,0.9)] px-2 py-2 sm:px-3 text-xs sm:text-sm text-[#F2F6FF] focus:border-[rgba(79,163,227,0.6)] focus:outline-none focus:ring-2 focus:ring-[rgba(79,163,227,0.3)]"
                   >
                     <option value="all">All Departments</option>
                     {departments.map((dept) => (
@@ -551,9 +552,9 @@ const playReminderAudioFiveTimes = async () => {
                       setFilterSeverity('all');
                       setFilterDepartment('all');
                     }}
-                    className="rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(79,163,227,0.15)] px-3 py-2 text-xs font-semibold text-[#F2F6FF] transition hover:bg-[rgba(79,163,227,0.25)] focus:outline-none focus:ring-2 focus:ring-[rgba(79,163,227,0.3)] whitespace-nowrap"
+                    className="rounded-lg sm:rounded-xl border border-[rgba(79,163,227,0.35)] bg-[rgba(79,163,227,0.15)] px-2 py-2 sm:px-3 text-[10px] sm:text-xs font-semibold text-[#F2F6FF] transition hover:bg-[rgba(79,163,227,0.25)] active:bg-[rgba(79,163,227,0.25)] focus:outline-none focus:ring-2 focus:ring-[rgba(79,163,227,0.3)] whitespace-nowrap"
                   >
-                    Clear Filters
+                    Clear
                   </button>
                 )}
               </div>
@@ -561,7 +562,7 @@ const playReminderAudioFiveTimes = async () => {
 
             {/* Results Count */}
             {filteredTickets.length !== sortedTickets.length && (
-              <div className="mb-2 text-xs text-[#A9B0D6] flex-shrink-0">
+              <div className="mb-2 text-[10px] sm:text-xs text-[#A9B0D6] flex-shrink-0">
                 Showing {filteredTickets.length} of {sortedTickets.length} tickets
               </div>
             )}

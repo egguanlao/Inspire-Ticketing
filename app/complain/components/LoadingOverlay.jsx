@@ -13,7 +13,7 @@ export default function LoadingOverlay({ isSubmitting }) {
       </div>
       
       {/* Text - Positioned directly below the gears */}
-      <p className="absolute top-[calc(50%+90px)] left-5 right-0 text-4xl font-semibold text-[#F2F6FF] text-center z-10">
+      <p className="absolute top-[calc(50%+70px)] sm:top-[calc(50%+90px)] left-0 right-0 text-2xl sm:text-4xl font-semibold text-[#F2F6FF] text-center z-10 px-4">
         Please Wait...
       </p>
     </div>
